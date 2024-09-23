@@ -134,6 +134,15 @@
                 window.setVolume = function (volume) {
                     unityInstance.SendMessage('MusicController', 'SetVolume', volume);
                 };
+
+                // Sekme değiştirildiğinde müziği durdurma ve başlatma
+                document.addEventListener('visibilitychange', function () {
+                    if (document.hidden) {
+                        pauseMusic(); // Sekme değiştirildiğinde müziği durdur
+                    } else {
+                        playMusic(); // Sekme geri geldiğinde müziği oynat
+                    }
+                });
             }).catch((message) => {
                 alert(message);
             });
